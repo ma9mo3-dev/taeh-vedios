@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TAEH VEDIOS | ذكاء اصطناعي يصنع الفيديوهات</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Tahoma', sans-serif;
+      background: linear-gradient(to right, #1f1c2c, #928dab);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: rgba(0,0,0,0.5);
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .container {
+      margin-top: 40px;
+      max-width: 800px;
+      width: 90%;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    label {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      display: block;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      font-size: 1em;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      resize: none;
+      outline: none;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 1em;
+      background-color: #6a11cb;
+      background-image: linear-gradient(315deg, #6a11cb 0%, #2575fc 74%);
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-image: linear-gradient(315deg, #2575fc 0%, #6a11cb 74%);
+    }
+    .video-result {
+      margin-top: 30px;
+      text-align: center;
+    }
+    video {
+      width: 100%;
+      border-radius: 10px;
+      max-height: 400px;
+    }
+    .api-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #ffffff22;
+      border: 1px solid #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      font-size: 0.9em;
+    }
+    .popup {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background: #222;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      color: white;
+      font-size: 1em;
+    }
+    .popup pre {
+      background: #111;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin-top: 10px;
+      direction: ltr;
+      text-align: left;
+    }
+    .close-popup {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: crimson;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>⚡ TAEH VEDIOS</header>
+
+  <div class="container">
+    <label for="prompt">صف الفيديو اللي عايزه يتولد بالذكاء الاصطناعي:</label>
+    <textarea id="prompt" placeholder="مثال: معركة خرافية بين روبوتات في مدينة مهجورة..."></textarea>
+    <button onclick="generateVideo()">أنشئ الفيديو الآن</button>
+
+    <div class="video-result" id="result"></div>
+  </div>
+
+  <div class="api-button" onclick="openPopup()">عايز تستخدم الـ API؟</div>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h3>🧠 API TAEH VEDIOS</h3>
+      <p>ممكن تستخدم الكود التالي من سيرفرك أو تطبيقك:</p>
+      <pre>
+POST https://text2video.aritek.app/txt2videov3
+
+{
+  "prompt": "معركة نينجا في الثلج",
+  "deviceID": "your-device-id",
+  "isPremium": 1,
+  "used": [],
+  "versionCode": 59
+}
+      </pre>
+      <button class="close-popup" onclick="closePopup()">فهمت ✘</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+  </html>
